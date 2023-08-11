@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.prplmnstr.technoplast.R
+import com.prplmnstr.technoplast.databinding.ActivityAdminBinding
 
 class AdminActivity : AppCompatActivity() {
 
@@ -13,6 +14,7 @@ class AdminActivity : AppCompatActivity() {
 
     private val machinesFragment = MachinesFragment()
     private val workerFragment = AddWorkerFragment()
+    private lateinit var binding : ActivityAdminBinding
 
 
     private val onNavigationItemSelectedListener =
@@ -26,9 +28,10 @@ class AdminActivity : AppCompatActivity() {
         }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_admin)
-        val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottomNavigationView)
-        bottomNavigationView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
+        binding = ActivityAdminBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        binding.bottomNavigationView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
 
         // Show the default fragment
         showFragment(machinesFragment)
