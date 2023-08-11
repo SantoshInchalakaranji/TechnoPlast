@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
 
         Handler().postDelayed({
             if (currentUser == null) {
-                startActivity(Intent(this, LoginActivity::class.java))
+                startActivity(Intent(this, OperatorActivity::class.java))
             } else {
 
                 try {

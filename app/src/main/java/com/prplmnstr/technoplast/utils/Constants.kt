@@ -9,6 +9,7 @@ class Constants {
         const val OPERATOR = "Operator";
         const val SAVED_USER_TYPE = "userType";
         const val SHARED_PREFERENCE = "Myprefs"
+        const val OPERATORS = "Operators"
 
          val USER_TYPE_SIGN_IN = Arrays.asList<String>(
            OPERATOR,
