@@ -164,7 +164,11 @@
                             android:id="@+id/et1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:hint="@string/one"
+                            android:enabled="false"
+
+                            android:text="@string/one"
+                            android:textColor="@color/black"
+                            app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
@@ -173,6 +177,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textSize="14sp"
+
                             android:background="@drawable/production_bg"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -264,9 +269,9 @@
                             android:layout_height="wrap_content"
                             android:background="@drawable/production_bg"
                             android:textSize="14sp"
-                            app:layout_constraintBottom_toBottomOf="@id/parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="@id/parent" />
+                            app:layout_constraintTop_toTopOf="parent" />
 
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -297,7 +302,7 @@
                             android:textSize="14sp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="@id/parent" />
+                            app:layout_constraintTop_toTopOf="parent" />
 
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -325,10 +330,10 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="@drawable/production_bg"
-                            app:layout_constraintBottom_toBottomOf="@id/parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
                             android:textSize="14sp"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="@id/parent" />
+                            app:layout_constraintTop_toTopOf="parent" />
 
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -357,9 +362,9 @@
                             android:layout_height="wrap_content"
                             android:background="@drawable/production_bg"
                             android:textSize="14sp"
-                            app:layout_constraintBottom_toBottomOf="@id/parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="@id/parent" />
+                            app:layout_constraintTop_toTopOf="parent" />
 
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -388,9 +393,9 @@
                             android:layout_height="wrap_content"
                             android:background="@drawable/production_bg"
                             android:textSize="14sp"
-                            app:layout_constraintBottom_toBottomOf="@id/parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="@id/parent" />
+                            app:layout_constraintTop_toTopOf="parent" />
 
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -419,9 +424,9 @@
                             android:layout_height="wrap_content"
                             android:background="@drawable/production_bg"
                             android:textSize="14sp"
-                            app:layout_constraintBottom_toBottomOf="@id/parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="@id/parent" />
+                            app:layout_constraintTop_toTopOf="parent" />
 
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -450,9 +455,9 @@
                             android:layout_height="wrap_content"
                             android:background="@drawable/production_bg"
                             android:textSize="14sp"
-                            app:layout_constraintBottom_toBottomOf="@id/parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="@id/parent" />
+                            app:layout_constraintTop_toTopOf="parent" />
 
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -481,9 +486,9 @@
                             android:layout_height="wrap_content"
                             android:background="@drawable/production_bg"
                             android:textSize="14sp"
-                            app:layout_constraintBottom_toBottomOf="@id/parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="@id/parent" />
+                            app:layout_constraintTop_toTopOf="parent" />
 
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -512,9 +517,9 @@
                             android:layout_height="wrap_content"
                             android:background="@drawable/production_bg"
                             android:textSize="14sp"
-                            app:layout_constraintBottom_toBottomOf="@id/parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="@id/parent" />
+                            app:layout_constraintTop_toTopOf="parent"/>
 
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
