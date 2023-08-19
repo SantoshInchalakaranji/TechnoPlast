@@ -56,7 +56,7 @@
         android:background="@drawable/rectangular_bg"
         android:drawableLeft="@drawable/mail_icon"
         android:drawablePadding="8dp"
-        android:text=" Email"
+
         android:hint="Email"
         android:textSize="14sp"
         android:fontFamily="@font/titillium_web_regular"
@@ -73,7 +73,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/rectangular_bg"
         android:drawableLeft="@drawable/lock_icon"
-        android:text=" Password"
+        android:hint=" Password"
         android:fontFamily="@font/titillium_web_regular"
         android:textSize="14sp"
         android:drawablePadding="8dp"

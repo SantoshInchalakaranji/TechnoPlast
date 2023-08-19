@@ -42,4 +42,6 @@ class AdminActivity : AppCompatActivity() {
             .replace(R.id.fragmentContainer, fragment)
             .commit()
     }
+
+
 }

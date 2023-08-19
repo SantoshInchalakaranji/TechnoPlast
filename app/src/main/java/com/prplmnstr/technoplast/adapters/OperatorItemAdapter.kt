@@ -17,6 +17,7 @@ class OperatorItemAdapter(private val userList: MutableList<Operator>,val viewMo
 
     private lateinit var binding: OperatorItemBinding
     private lateinit var context: Context
+    var callback: DeleteCallback? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
         context = parent.context
@@ -61,8 +62,11 @@ class OperatorItemAdapter(private val userList: MutableList<Operator>,val viewMo
         alertDialog.show()
     }
     fun deleteItem(position: Int) {
+
         viewModel.deleteOperatorByDocumentName(userList[position].email ){isSuccess ->
+
             if(isSuccess){
+
                 Toast.makeText(context,"Deleted successfully.",Toast.LENGTH_SHORT)
             }else{
                 Toast.makeText(context,"Something went wrong, please try again.",Toast.LENGTH_SHORT)
@@ -70,6 +74,10 @@ class OperatorItemAdapter(private val userList: MutableList<Operator>,val viewMo
         }
         userList.removeAt(position)
         notifyItemRemoved(position)
+        callback?.onItemDeleted(position)
+    }
+    interface DeleteCallback {
+        fun onItemDeleted(position: Int)
     }
 }
 

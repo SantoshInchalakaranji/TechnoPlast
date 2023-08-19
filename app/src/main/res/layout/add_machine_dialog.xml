@@ -1,0 +1,447 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/dialogContainer"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:layout_margin="16dp"
+        android:background="@color/white"
+        >
+        <androidx.cardview.widget.CardView
+            android:id="@+id/machine_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            app:cardCornerRadius="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/resisterTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="New Machine"
+                    android:textAppearance="@style/TitleStyle"
+                    android:textColor="@color/black"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/center_guideline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.5" />
+
+                <TextView
+                    android:id="@+id/machine_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Machine"
+                    android:textAppearance="@style/SubTitleStyleSemiBold"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/resisterTV" />
+
+
+                <EditText
+                    android:id="@+id/machine_name_et"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="8dp"
+                    android:background="@drawable/production_bg"
+                    android:singleLine="true"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toStartOf="@id/center_guideline"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/machine_tv" />
+
+
+                <TextView
+                    android:id="@+id/mould_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:text="Mould"
+                    android:textAppearance="@style/SubTitleStyleSemiBold"
+                    android:textColor="@color/black"
+                    app:layout_constraintStart_toEndOf="@id/center_guideline"
+                    app:layout_constraintTop_toTopOf="@id/machine_tv" />
+
+                <EditText
+                    android:id="@+id/mould_et"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/production_bg"
+                    android:singleLine="true"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/center_guideline"
+                    app:layout_constraintTop_toBottomOf="@id/mould_tv" />
+
+                <TextView
+                    android:id="@+id/product_wt_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Production WT"
+                    android:textAppearance="@style/SubTitleStyleSemiBold"
+                    android:textColor="@color/black"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/order_qty_tv" />
+
+                <EditText
+                    android:id="@+id/productin_wt_et"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="8dp"
+                    android:background="@drawable/production_bg"
+                    android:singleLine="true"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toStartOf="@id/center_guideline"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/product_wt_tv" />
+
+
+                <TextView
+                    android:id="@+id/order_qty_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="16dp"
+                    android:text="Po(Order QTY)"
+                    android:textAppearance="@style/SubTitleStyleSemiBold"
+                    android:textColor="@color/black"
+                    app:layout_constraintStart_toEndOf="@id/center_guideline"
+                    app:layout_constraintTop_toBottomOf="@id/mould_et" />
+
+                <EditText
+                    android:id="@+id/order_qty_et"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/production_bg"
+                    android:singleLine="true"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/center_guideline"
+                    app:layout_constraintTop_toBottomOf="@id/order_qty_tv" />
+
+
+                <TextView
+                    android:id="@+id/m_load_time_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Mould Load Time"
+                    android:textAppearance="@style/SubTitleStyleSemiBold"
+                    android:textColor="@color/black"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/productin_wt_et" />
+
+                <EditText
+                    android:id="@+id/m_load_time_et"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="8dp"
+                    android:background="@drawable/production_bg"
+                    android:singleLine="true"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toStartOf="@id/center_guideline"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/m_load_time_tv" />
+
+                <TextView
+                    android:id="@+id/m_unload_time_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="16dp"
+                    android:text="Mould Unload Time"
+                    android:textAppearance="@style/SubTitleStyleSemiBold"
+                    android:textColor="@color/black"
+                    app:layout_constraintStart_toEndOf="@id/center_guideline"
+                    app:layout_constraintTop_toBottomOf="@id/order_qty_et" />
+
+                <EditText
+                    android:id="@+id/m_unload_time_et"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/production_bg"
+                    android:singleLine="true"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/center_guideline"
+                    app:layout_constraintTop_toBottomOf="@id/m_unload_time_tv" />
+
+                <TextView
+                    android:id="@+id/article_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Act WT of Article"
+                    android:textAppearance="@style/SubTitleStyleSemiBold"
+                    android:textColor="@color/black"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/m_load_time_et" />
+
+                <EditText
+                    android:id="@+id/article_et"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="8dp"
+                    android:background="@drawable/production_bg"
+                    android:singleLine="true"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toStartOf="@id/center_guideline"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/article_tv" />
+
+                <TextView
+                    android:id="@+id/heatind_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="16dp"
+                    android:text="Heating"
+                    android:textAppearance="@style/SubTitleStyleSemiBold"
+                    android:textColor="@color/black"
+                    app:layout_constraintStart_toEndOf="@id/center_guideline"
+                    app:layout_constraintTop_toBottomOf="@id/m_unload_time_et" />
+
+                <EditText
+                    android:id="@+id/heating_et"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/production_bg"
+                    android:singleLine="true"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/center_guideline"
+                    app:layout_constraintTop_toBottomOf="@id/heatind_tv" />
+
+
+                <TextView
+                    android:id="@+id/cavity_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="No of Cavity"
+                    android:textAppearance="@style/SubTitleStyleSemiBold"
+                    android:textColor="@color/black"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/article_et" />
+
+                <EditText
+                    android:id="@+id/cavity_et"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="8dp"
+                    android:background="@drawable/production_bg"
+                    android:singleLine="true"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toStartOf="@id/center_guideline"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cavity_tv" />
+
+
+                <TextView
+                    android:id="@+id/heating_act_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="16dp"
+                    android:text="Heating Act"
+                    android:textAppearance="@style/SubTitleStyleSemiBold"
+                    android:textColor="@color/black"
+                    app:layout_constraintStart_toEndOf="@id/center_guideline"
+                    app:layout_constraintTop_toBottomOf="@id/heating_et" />
+
+                <EditText
+                    android:id="@+id/heating_act_et"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/production_bg"
+                    android:singleLine="true"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/center_guideline"
+                    app:layout_constraintTop_toBottomOf="@id/heating_act_tv" />
+
+
+                <TextView
+                    android:id="@+id/raw_material_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Raw Material"
+                    android:textAppearance="@style/SubTitleStyleSemiBold"
+                    android:textColor="@color/black"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cavity_et" />
+
+                <EditText
+                    android:id="@+id/raw_material_et"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="8dp"
+                    android:background="@drawable/production_bg"
+                    android:singleLine="true"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toStartOf="@id/center_guideline"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/raw_material_tv" />
+
+                <TextView
+                    android:id="@+id/material_used_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="16dp"
+                    android:text="Total Material Used(KG)"
+                    android:textAppearance="@style/SubTitleStyleSemiBold"
+                    android:textColor="@color/black"
+                    app:layout_constraintStart_toEndOf="@id/center_guideline"
+                    app:layout_constraintTop_toBottomOf="@id/heating_act_et" />
+
+                <EditText
+                    android:id="@+id/material_used_et"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/production_bg"
+                    android:singleLine="true"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/center_guideline"
+                    app:layout_constraintTop_toBottomOf="@id/material_used_tv" />
+
+
+                <TextView
+                    android:id="@+id/pigment_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="MB/Pigment"
+                    android:textAppearance="@style/SubTitleStyleSemiBold"
+                    android:textColor="@color/black"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/raw_material_et" />
+
+                <EditText
+                    android:id="@+id/pigment_et"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="8dp"
+                    android:background="@drawable/production_bg"
+                    android:singleLine="true"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toStartOf="@id/center_guideline"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/pigment_tv" />
+
+
+                <TextView
+                    android:id="@+id/mb_used_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="16dp"
+                    android:text="Total MB Used(KG)"
+                    android:textAppearance="@style/SubTitleStyleSemiBold"
+                    android:textColor="@color/black"
+                    app:layout_constraintStart_toEndOf="@id/center_guideline"
+                    app:layout_constraintTop_toBottomOf="@id/material_used_et" />
+
+                <EditText
+                    android:id="@+id/mb_used_et"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/production_bg"
+                    android:singleLine="true"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/center_guideline"
+                    app:layout_constraintTop_toBottomOf="@id/mb_used_tv" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/dialog_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+
+                    android:background="@drawable/red_rect_bg"
+                    android:text="+ Add Machine"
+                    android:textAllCaps="false"
+                    android:textAppearance="@style/SubTitleStyle"
+                    app:backgroundTint="@color/light_red"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/pigment_et" />
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:visibility="invisible"
+                    app:layout_constraintTop_toBottomOf="@+id/dialog_button"
+                    app:layout_constraintLeft_toLeftOf="parent"
+
+                    >
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+    </ScrollView>
+
+
+
+
+
+
+
+
+
+
+</LinearLayout>

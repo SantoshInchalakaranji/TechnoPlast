@@ -3,7 +3,1298 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".views.admin.MachineDetailsActivity">
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/c_layout1"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="@color/white"
+        android:elevation="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/back_iv"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_marginStart="8dp"
+
+            android:src="@drawable/baseline_arrow_back_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/machine_name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:text="Machine Name"
+            android:textAppearance="@style/LargeText"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@id/back_iv"
+            app:layout_constraintStart_toEndOf="@id/back_iv"
+            app:layout_constraintTop_toTopOf="@id/back_iv" />
+
+        <ImageView
+            android:id="@+id/sun_iv"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_marginRight="16dp"
+            android:src="@drawable/day"
+            app:layout_constraintBottom_toBottomOf="@+id/machine_name_tv"
+            app:layout_constraintEnd_toStartOf="@id/download_iv"
+            app:layout_constraintTop_toTopOf="@+id/machine_name_tv" />
+
+        <ImageView
+            android:id="@+id/download_iv"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="4dp"
+            android:src="@drawable/baseline_download_24"
+            app:layout_constraintBottom_toBottomOf="@+id/machine_name_tv"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/machine_name_tv" />
+
+        <Switch
+            android:id="@+id/switch_button"
+            android:layout_width="wrap_content"
+            android:layout_height="28dp"
+            android:layout_marginRight="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/sun_iv"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/c_layout1"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/r_guideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="16dp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/l_guideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.04136253" />
+            <TextView
+                android:id="@+id/text_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Date"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/segeo_bold"
+
+                android:textAppearance="@style/RegularStyle"
+                android:textColor="#BDBDBE"
+                android:textSize="14sp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toEndOf="@id/l_guideline"/>
+
+
+            <TextView
+                android:id="@+id/spinner1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+
+                android:clickable="true"
+                android:layout_marginTop="8dp"
+                android:gravity="start"
+                android:paddingStart="8dp"
+                android:text="Today"
+                android:textAllCaps="false"
+
+                android:textAppearance="@style/SubTitleStyle"
+                android:background="@drawable/production_bg"
+
+                app:layout_constraintEnd_toStartOf="@id/r_guideline"
+                app:layout_constraintStart_toEndOf="@id/l_guideline"
+                app:layout_constraintTop_toBottomOf="@id/text_tv" />
+
+
+
+
+
+
+
+            <TextView
+                android:id="@+id/select_machine_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Machine Details"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/segeo_bold"
+
+                android:textAppearance="@style/RegularStyle"
+                android:textColor="#BDBDBE"
+                android:textSize="14sp"
+                app:layout_constraintTop_toBottomOf="@id/spinner1"
+                app:layout_constraintStart_toEndOf="@id/l_guideline"/>
+
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/machine_card"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:elevation="4dp"
+                app:cardCornerRadius="16dp"
+                app:layout_constraintTop_toBottomOf="@id/select_machine_tv"
+                app:layout_constraintStart_toEndOf="@id/l_guideline"
+                app:layout_constraintEnd_toStartOf="@id/r_guideline">
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp">
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/center_guideline"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.5" />
+
+                    <TextView
+                        android:id="@+id/machine_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Machine"
+                        android:textAppearance="@style/SubTitleStyleSemiBold"
+                        android:textColor="@color/black"
+
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                    <EditText
+                        android:id="@+id/machine_name_et"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginRight="8dp"
+                        android:background="@drawable/production_bg"
+                        android:singleLine="true"
+                        android:textColor="@color/black"
+                        android:enabled="false"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toStartOf="@id/center_guideline"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/machine_tv" />
+
+                    <TextView
+                        android:id="@+id/mould_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Mould"
+                        android:textAppearance="@style/SubTitleStyleSemiBold"
+                        android:textColor="@color/black"
+                        android:layout_marginLeft="8dp"
+                        app:layout_constraintStart_toEndOf="@id/center_guideline"
+                        app:layout_constraintTop_toTopOf="@id/machine_tv" />
+
+                    <EditText
+                        android:id="@+id/mould_et"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/production_bg"
+                        android:textSize="14sp"
+                        android:layout_marginLeft="8dp"
+                        android:singleLine="true"
+                        app:layout_constraintTop_toBottomOf="@id/mould_tv"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/center_guideline"/>
+
+                    <TextView
+                        android:id="@+id/product_wt_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Production WT"
+                        android:textAppearance="@style/SubTitleStyleSemiBold"
+                        android:textColor="@color/black"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/order_qty_tv" />
+
+                    <EditText
+                        android:id="@+id/productin_wt_et"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginRight="8dp"
+                        android:background="@drawable/production_bg"
+                        android:textSize="14sp"
+                        android:singleLine="true"
+                        app:layout_constraintTop_toBottomOf="@id/product_wt_tv"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/center_guideline"/>
+
+
+                    <TextView
+                        android:id="@+id/order_qty_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Po(Order QTY)"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginLeft="8dp"
+                        android:textAppearance="@style/SubTitleStyleSemiBold"
+                        android:textColor="@color/black"
+                        app:layout_constraintStart_toEndOf="@id/center_guideline"
+                        app:layout_constraintTop_toBottomOf="@id/mould_et" />
+
+                    <EditText
+                        android:id="@+id/order_qty_et"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/production_bg"
+                        android:textSize="14sp"
+                        android:singleLine="true"
+                        android:layout_marginLeft="8dp"
+                        app:layout_constraintTop_toBottomOf="@id/order_qty_tv"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/center_guideline"/>
+
+
+                    <TextView
+                        android:id="@+id/m_load_time_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Mould Load Time"
+                        android:layout_marginTop="16dp"
+                        android:textAppearance="@style/SubTitleStyleSemiBold"
+                        android:textColor="@color/black"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/productin_wt_et" />
+
+                    <EditText
+                        android:id="@+id/m_load_time_et"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginRight="8dp"
+                        android:background="@drawable/production_bg"
+                        android:textSize="14sp"
+                        android:singleLine="true"
+                        app:layout_constraintTop_toBottomOf="@id/m_load_time_tv"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/center_guideline"/>
+
+                    <TextView
+                        android:id="@+id/m_unload_time_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Mould Unload Time"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginLeft="8dp"
+                        android:textAppearance="@style/SubTitleStyleSemiBold"
+                        android:textColor="@color/black"
+                        app:layout_constraintStart_toEndOf="@id/center_guideline"
+                        app:layout_constraintTop_toBottomOf="@id/order_qty_et" />
+
+                    <EditText
+                        android:id="@+id/m_unload_time_et"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/production_bg"
+                        android:textSize="14sp"
+                        android:singleLine="true"
+                        android:layout_marginLeft="8dp"
+                        app:layout_constraintTop_toBottomOf="@id/m_unload_time_tv"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/center_guideline"/>
+
+                    <TextView
+                        android:id="@+id/article_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Act WT of Article"
+                        android:layout_marginTop="16dp"
+                        android:textAppearance="@style/SubTitleStyleSemiBold"
+                        android:textColor="@color/black"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/m_load_time_et" />
+
+                    <EditText
+                        android:id="@+id/article_et"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginRight="8dp"
+                        android:background="@drawable/production_bg"
+                        android:textSize="14sp"
+                        android:singleLine="true"
+                        app:layout_constraintTop_toBottomOf="@id/article_tv"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/center_guideline"/>
+
+                    <TextView
+                        android:id="@+id/heatind_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Heating"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginLeft="8dp"
+                        android:textAppearance="@style/SubTitleStyleSemiBold"
+                        android:textColor="@color/black"
+                        app:layout_constraintStart_toEndOf="@id/center_guideline"
+                        app:layout_constraintTop_toBottomOf="@id/m_unload_time_et" />
+
+                    <EditText
+                        android:id="@+id/heating_et"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/production_bg"
+                        android:textSize="14sp"
+                        android:singleLine="true"
+                        android:layout_marginLeft="8dp"
+                        app:layout_constraintTop_toBottomOf="@id/heatind_tv"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/center_guideline"/>
+
+
+                    <TextView
+                        android:id="@+id/cavity_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="No of Cavity"
+                        android:layout_marginTop="16dp"
+                        android:textAppearance="@style/SubTitleStyleSemiBold"
+                        android:textColor="@color/black"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/article_et" />
+
+                    <EditText
+                        android:id="@+id/cavity_et"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginRight="8dp"
+                        android:background="@drawable/production_bg"
+                        android:textSize="14sp"
+                        android:singleLine="true"
+                        app:layout_constraintTop_toBottomOf="@id/cavity_tv"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/center_guideline"/>
+
+
+                    <TextView
+                        android:id="@+id/heating_act_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Heating Act"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginLeft="8dp"
+                        android:textAppearance="@style/SubTitleStyleSemiBold"
+                        android:textColor="@color/black"
+                        app:layout_constraintStart_toEndOf="@id/center_guideline"
+                        app:layout_constraintTop_toBottomOf="@id/heating_et" />
+
+                    <EditText
+                        android:id="@+id/heating_act_et"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/production_bg"
+                        android:textSize="14sp"
+                        android:singleLine="true"
+                        android:layout_marginLeft="8dp"
+                        app:layout_constraintTop_toBottomOf="@id/heating_act_tv"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/center_guideline"/>
+
+
+                    <TextView
+                        android:id="@+id/raw_material_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Raw Material"
+                        android:layout_marginTop="16dp"
+                        android:textAppearance="@style/SubTitleStyleSemiBold"
+                        android:textColor="@color/black"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/cavity_et" />
+
+                    <EditText
+                        android:id="@+id/raw_material_et"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginRight="8dp"
+                        android:background="@drawable/production_bg"
+                        android:textSize="14sp"
+                        android:singleLine="true"
+                        app:layout_constraintTop_toBottomOf="@id/raw_material_tv"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/center_guideline"/>
+
+                    <TextView
+                        android:id="@+id/material_used_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Total Material Used(KG)"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginLeft="8dp"
+                        android:textAppearance="@style/SubTitleStyleSemiBold"
+                        android:textColor="@color/black"
+                        app:layout_constraintStart_toEndOf="@id/center_guideline"
+                        app:layout_constraintTop_toBottomOf="@id/heating_act_et" />
+
+                    <EditText
+                        android:id="@+id/material_used_et"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/production_bg"
+                        android:textSize="14sp"
+                        android:singleLine="true"
+                        android:layout_marginLeft="8dp"
+                        app:layout_constraintTop_toBottomOf="@id/material_used_tv"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/center_guideline"/>
+
+
+
+                    <TextView
+                        android:id="@+id/pigment_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="MB/Pigment"
+                        android:layout_marginTop="16dp"
+                        android:textAppearance="@style/SubTitleStyleSemiBold"
+                        android:textColor="@color/black"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/raw_material_et" />
+
+                    <EditText
+                        android:id="@+id/pigment_et"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginRight="8dp"
+                        android:background="@drawable/production_bg"
+                        android:textSize="14sp"
+                        android:singleLine="true"
+                        app:layout_constraintTop_toBottomOf="@id/pigment_tv"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/center_guideline"/>
+
+
+
+                    <TextView
+                        android:id="@+id/mb_used_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Total MB Used(KG)"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginLeft="8dp"
+                        android:textAppearance="@style/SubTitleStyleSemiBold"
+                        android:textColor="@color/black"
+                        app:layout_constraintStart_toEndOf="@id/center_guideline"
+                        app:layout_constraintTop_toBottomOf="@id/material_used_et" />
+
+                    <EditText
+                        android:id="@+id/mb_used_et"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/production_bg"
+                        android:textSize="14sp"
+                        android:singleLine="true"
+                        android:layout_marginLeft="8dp"
+                        app:layout_constraintTop_toBottomOf="@id/mb_used_tv"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/center_guideline"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+
+
+
+            <TextView
+                android:id="@+id/date_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Shift Details"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/segeo_bold"
+
+                android:textAppearance="@style/RegularStyle"
+                android:textColor="#BDBDBE"
+                android:textSize="14sp"
+                app:layout_constraintTop_toBottomOf="@id/machine_card"
+                app:layout_constraintStart_toEndOf="@id/l_guideline"/>
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/first_cardview"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:elevation="4dp"
+                app:cardCornerRadius="16dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@id/date_tv"
+                app:layout_constraintStart_toEndOf="@id/l_guideline"
+                app:layout_constraintEnd_toStartOf="@id/r_guideline">
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:id="@+id/Shift_time_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Shift Timing"
+                        android:textAppearance="@style/SubTitleStyleSemiBold"
+                        android:textColor="@color/black"
+
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/production_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:text="Production"
+                        android:textAppearance="@style/SubTitleStyleSemiBold"
+                        android:textColor="@color/light_red"
+                        app:layout_constraintBottom_toBottomOf="@id/Shift_time_tv"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/Shift_time_tv" />
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/card_layout1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:padding="1dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/Shift_time_tv">
+
+                        <EditText
+                            android:id="@+id/et1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:enabled="false"
+                            android:textColor="@color/black"
+                            android:text="@string/one"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <EditText
+                            android:id="@+id/first_et"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="14sp"
+                            android:enabled="false"
+                            android:textColor="@color/black"
+
+                            android:background="@drawable/production_bg"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/card_layout2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/card_layout1">
+
+                        <EditText
+                            android:id="@+id/et2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/two"
+                            android:enabled="false"
+                            android:textColor="@color/black"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <EditText
+                            android:id="@+id/second_et"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="14sp"
+                            android:enabled="false"
+                            android:textColor="@color/black"
+                            android:background="@drawable/production_bg"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/card_layout3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/card_layout2">
+
+                        <EditText
+                            android:id="@+id/et3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/three"
+                            android:enabled="false"
+                            android:textColor="@color/black"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <EditText
+                            android:id="@+id/three_et"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="14sp"
+                            android:enabled="false"
+                            android:textColor="@color/black"
+                            android:background="@drawable/production_bg"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/card_layout4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/card_layout3">
+
+                        <EditText
+                            android:id="@+id/et4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/four"
+                            android:enabled="false"
+                            android:textColor="@color/black"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <EditText
+                            android:id="@+id/four_et"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/production_bg"
+                            android:textSize="14sp"
+                            android:enabled="false"
+                            android:textColor="@color/black"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/card_layout5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/card_layout4">
+
+                        <EditText
+                            android:id="@+id/et5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/five"
+                            android:enabled="false"
+                            android:textColor="@color/black"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <EditText
+                            android:id="@+id/five_et"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/production_bg"
+                            android:textSize="14sp"
+                            android:enabled="false"
+                            android:textColor="@color/black"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/card_layout6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/card_layout5">
+
+                        <EditText
+                            android:id="@+id/et6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/six"
+                            android:enabled="false"
+                            android:textColor="@color/black"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <EditText
+                            android:id="@+id/six_et"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/production_bg"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            android:textSize="14sp"
+                            android:enabled="false"
+                            android:textColor="@color/black"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/card_layout7"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/card_layout6">
+
+                        <EditText
+                            android:id="@+id/et7"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/seven"
+                            android:enabled="false"
+                            android:textColor="@color/black"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <EditText
+                            android:id="@+id/seven_et"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/production_bg"
+                            android:textSize="14sp"
+                            android:enabled="false"
+                            android:textColor="@color/black"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/card_layout8"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/card_layout7">
+
+                        <EditText
+                            android:id="@+id/et8"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/eight"
+                            android:enabled="false"
+                            android:textColor="@color/black"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <EditText
+                            android:id="@+id/eight_et"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/production_bg"
+                            android:textSize="14sp"
+                            android:enabled="false"
+                            android:textColor="@color/black"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/card_layout9"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/card_layout8">
+
+                        <EditText
+                            android:id="@+id/et9"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/nine"
+                            android:enabled="false"
+                            android:textColor="@color/black"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <EditText
+                            android:id="@+id/nine_et"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/production_bg"
+                            android:textSize="14sp"
+                            android:enabled="false"
+                            android:textColor="@color/black"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/card_layout10"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/card_layout9">
+
+                        <EditText
+                            android:id="@+id/et10"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/ten"
+                            android:enabled="false"
+                            android:textColor="@color/black"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <EditText
+                            android:id="@+id/ten_et"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/production_bg"
+                            android:textSize="14sp"
+                            android:enabled="false"
+                            android:textColor="@color/black"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/card_layout11"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/card_layout10">
+
+                        <EditText
+                            android:id="@+id/et11"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/eleven"
+                            android:enabled="false"
+                            android:textColor="@color/black"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <EditText
+                            android:id="@+id/eleven_et"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/production_bg"
+                            android:textSize="14sp"
+                            android:enabled="false"
+                            android:textColor="@color/black"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/card_layout12"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/card_layout11">
+
+                        <EditText
+                            android:id="@+id/et12"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/twelve"
+                            android:enabled="false"
+                            android:textColor="@color/black"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <EditText
+                            android:id="@+id/twelve_tv_et"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/production_bg"
+                            android:textSize="14sp"
+                            android:enabled="false"
+                            android:textColor="@color/black"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"/>
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/summary_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Summary"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/segeo_bold"
+
+                android:textAppearance="@style/RegularStyle"
+                android:textColor="#BDBDBE"
+                android:textSize="14sp"
+
+                app:layout_constraintTop_toBottomOf="@id/first_cardview"
+                app:layout_constraintStart_toEndOf="@id/l_guideline"/>
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/second_cardview"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:elevation="4dp"
+                app:cardCornerRadius="16dp"
+                app:layout_constraintEnd_toStartOf="@id/r_guideline"
+                app:layout_constraintStart_toEndOf="@id/l_guideline"
+                app:layout_constraintTop_toBottomOf="@id/summary_tv">
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp">
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/center_guideline2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.5" />
+
+
+                    <TextView
+                        android:id="@+id/total_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:fontFamily="@font/segeo_bold"
+                        android:text="Operator : Mubarak"
+                        android:textAppearance="@style/RegularStyle"
+                        android:textColor="#BDBDBE"
+                        android:textSize="14sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/qty_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="Qty"
+                        android:textAppearance="@style/SubTitleStyleSemiBold"
+                        android:textColor="@color/black"
+
+                        app:layout_constraintStart_toStartOf="@+id/qty_et"
+                        app:layout_constraintTop_toBottomOf="@id/total_tv" />
+
+                    <EditText
+                        android:id="@+id/qty_et"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:textSize="14sp"
+                        android:inputType="number"
+                        android:enabled="false"
+                        android:textColor="@color/black"
+                        android:background="@drawable/production_bg"
+                        android:layout_marginRight="8dp"
+                        app:layout_constraintEnd_toStartOf="@id/center_guideline2"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/qty_tv" />
+
+
+                    <TextView
+                        android:id="@+id/start_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="Start"
+                        android:textAppearance="@style/SubTitleStyleSemiBold"
+                        android:textColor="@color/black"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/qty_et" />
+
+                    <EditText
+                        android:id="@+id/start_et"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:textSize="14sp"
+                        android:inputType="number"
+                        android:enabled="false"
+                        android:textColor="@color/black"
+                        android:layout_marginRight="8dp"
+                        app:layout_constraintEnd_toStartOf="@id/center_guideline2"
+                        android:background="@drawable/production_bg"
+                        app:layout_constraintStart_toStartOf="@id/start_tv"
+                        app:layout_constraintTop_toBottomOf="@id/start_tv" />
+
+
+                    <TextView
+                        android:id="@+id/bal_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Bag"
+                        android:textAppearance="@style/SubTitleStyleSemiBold"
+                        android:textColor="@color/black"
+                        app:layout_constraintStart_toStartOf="@id/bal_et"
+                        app:layout_constraintTop_toTopOf="@id/qty_tv" />
+
+                    <EditText
+                        android:id="@+id/bal_et"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/production_bg"
+                        android:textSize="14sp"
+                        android:enabled="false"
+                        android:textColor="@color/black"
+                        android:inputType="number"
+                        android:layout_marginLeft="8dp"
+                        app:layout_constraintStart_toEndOf="@id/center_guideline2"
+                        app:layout_constraintBottom_toBottomOf="@id/qty_et"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/bal_tv" />
+
+
+                    <TextView
+                        android:id="@+id/end_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="8dp"
+                        android:text="End"
+                        android:textAppearance="@style/SubTitleStyleSemiBold"
+                        android:textColor="@color/black"
+                        app:layout_constraintStart_toStartOf="@id/bal_et"
+                        app:layout_constraintTop_toTopOf="@id/start_tv" />
+
+                    <EditText
+                        android:id="@+id/end_et"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/production_bg"
+                        android:textSize="14sp"
+                        android:inputType="number"
+                        android:enabled="false"
+                        android:textColor="@color/black"
+                        android:layout_marginLeft="8dp"
+                        app:layout_constraintStart_toEndOf="@id/center_guideline2"
+                        app:layout_constraintBottom_toBottomOf="@id/start_et"
+                        app:layout_constraintEnd_toEndOf="@+id/bal_et"
+                        app:layout_constraintTop_toBottomOf="@id/end_tv" />
+
+
+                    <TextView
+                        android:id="@+id/lump_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="Lump(gatta)"
+                        android:textAppearance="@style/SubTitleStyleSemiBold"
+                        android:textColor="@color/black"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/start_et" />
+
+                    <EditText
+                        android:id="@+id/lump_et"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:textSize="14sp"
+                        android:inputType="number"
+                        android:enabled="false"
+                        android:textColor="@color/black"
+                        android:layout_marginRight="8dp"
+                        app:layout_constraintEnd_toStartOf="@id/center_guideline2"
+                        android:background="@drawable/production_bg"
+                        app:layout_constraintStart_toStartOf="@id/lump_tv"
+                        app:layout_constraintTop_toBottomOf="@id/lump_tv" />
+
+                    <TextView
+                        android:id="@+id/material_left_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="8dp"
+                        android:text="Material Left"
+                        android:textAppearance="@style/SubTitleStyleSemiBold"
+                        android:textColor="@color/black"
+                        app:layout_constraintStart_toStartOf="@id/end_et"
+                        app:layout_constraintTop_toTopOf="@id/lump_tv" />
+                    <EditText
+                        android:id="@+id/material_left_et"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/production_bg"
+                        android:textSize="14sp"
+                        android:inputType="number"
+                        android:enabled="false"
+                        android:textColor="@color/black"
+                        android:layout_marginLeft="8dp"
+                        app:layout_constraintStart_toEndOf="@id/center_guideline2"
+                        app:layout_constraintBottom_toBottomOf="@id/lump_et"
+                        app:layout_constraintEnd_toEndOf="@+id/end_et"
+                        app:layout_constraintTop_toBottomOf="@id/material_left_tv" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/submitBtn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/red_rect_bg"
+                android:text="+ Update Record"
+                android:textAllCaps="false"
+                android:textAppearance="@style/SubTitleStyle"
+                app:backgroundTint="@color/light_red"
+                app:layout_constraintEnd_toStartOf="@id/r_guideline"
+                app:layout_constraintStart_toEndOf="@id/l_guideline"
+                app:layout_constraintTop_toBottomOf="@+id/second_cardview" />
+
+            <ProgressBar
+                android:id="@+id/submit_progress"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="16dp"
+                android:elevation="10dp"
+                android:indeterminateTint="@color/white"
+                android:visibility="invisible"
+                app:layout_constraintTop_toBottomOf="@id/submitBtn"
+                app:layout_constraintStart_toStartOf="@id/submitBtn"
+                app:layout_constraintEnd_toEndOf="@id/submitBtn"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

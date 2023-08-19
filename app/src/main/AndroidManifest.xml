@@ -32,18 +32,23 @@
 
         <activity
             android:name=".views.admin.MachineDetailsActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
-            android:name=".views.OperatorActivity"
+            android:name=".views.operator.OperatorActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".views.admin.AdminActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".views.LoginActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
+            android:screenOrientation="portrait"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

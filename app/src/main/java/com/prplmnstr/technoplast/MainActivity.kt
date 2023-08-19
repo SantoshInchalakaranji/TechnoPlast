@@ -14,7 +14,7 @@ import com.prplmnstr.technoplast.databinding.ActivityMainBinding
 import com.prplmnstr.technoplast.utils.Constants
 import com.prplmnstr.technoplast.views.admin.AdminActivity
 import com.prplmnstr.technoplast.views.LoginActivity
-import com.prplmnstr.technoplast.views.OperatorActivity
+import com.prplmnstr.technoplast.views.operator.OperatorActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
 
         Handler().postDelayed({
             if (currentUser == null) {
-                startActivity(Intent(this, OperatorActivity::class.java))
+                startActivity(Intent(this, LoginActivity::class.java))
             } else {
 
                 try {

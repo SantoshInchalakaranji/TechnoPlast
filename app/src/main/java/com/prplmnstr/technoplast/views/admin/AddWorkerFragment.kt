@@ -25,7 +25,7 @@ private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
 
-class AddWorkerFragment : Fragment() {
+class AddWorkerFragment : Fragment() , OperatorItemAdapter.DeleteCallback{
 
     private lateinit var viewModel: AddUserFragmentViewModel
     private lateinit var binding: FragmentAddWorkerBinding
@@ -40,6 +40,8 @@ class AddWorkerFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(AddUserFragmentViewModel::class.java)
 
+
+
         loadDialog()
         initializeLoader()
         loadOperators()
@@ -53,6 +55,7 @@ class AddWorkerFragment : Fragment() {
     private fun loadOperators() {
         loader.show()
         userAdapter = OperatorItemAdapter(operatorList,viewModel)
+        userAdapter.callback = this
         val swipeToDeleteCallback = SwipeToDeleteCallback(userAdapter)
         val itemTouchHelper = ItemTouchHelper(swipeToDeleteCallback)
         itemTouchHelper.attachToRecyclerView(binding.workersRV)
@@ -63,12 +66,21 @@ class AddWorkerFragment : Fragment() {
         }
 
 
-        viewModel.retrieveUserDataFromFirestore().observe(viewLifecycleOwner, { retrievedList ->
-            operatorList.clear()
-            operatorList.addAll(retrievedList)
-            userAdapter.notifyDataSetChanged()
+        viewModel.retrieveUserDataFromFirestore().observe(viewLifecycleOwner) { retrievedList ->
+            if (retrievedList.isEmpty()) {
+                binding.workersRV.visibility = View.GONE
+                binding.workerEmptyLayout.visibility = View.VISIBLE
+            } else {
+                operatorList.clear()
+                operatorList.addAll(retrievedList)
+                userAdapter.notifyDataSetChanged()
+
+                binding.workersRV.visibility = View.VISIBLE
+                binding.workerEmptyLayout.visibility = View.GONE
+            }
+
             loader.dismiss()
-        })
+        }
     }
 
 
@@ -123,8 +135,13 @@ class AddWorkerFragment : Fragment() {
                     if (isSuccess) {
                         Toast.makeText(requireContext(), "Operator Details added successfully!", Toast.LENGTH_SHORT).show()
                         val operator = Operator(userName,userEmail, userPassword)
+                        viewModel.signUpUser(userEmail,userPassword,requireContext())
                         operatorList.add(operator)
                         userAdapter.notifyDataSetChanged()
+                        if(!operatorList.isEmpty()){
+                            binding.workersRV.visibility = View.VISIBLE
+                            binding.workerEmptyLayout.visibility = View.GONE
+                        }
                         addUserDialog.dismiss()
                         loader.dismiss()
 
@@ -184,5 +201,12 @@ class AddWorkerFragment : Fragment() {
                     putString(ARG_PARAM2, param2)
                 }
             }
+    }
+
+    override fun onItemDeleted(position: Int) {
+        if(operatorList.isEmpty()){
+            binding.workersRV.visibility = View.GONE
+            binding.workerEmptyLayout.visibility = View.VISIBLE
+        }
     }
 }

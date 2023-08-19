@@ -7,46 +7,66 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".views.admin.MachinesFragment">
-
-    <androidx.core.widget.NestedScrollView
-        android:id="@+id/scroller"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/action_bar_layout1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="?actionBarSize"
+        android:background="@color/white"
+        android:elevation="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <TextView
+            android:id="@+id/machine_name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Machines"
+            android:textAppearance="@style/LargeText"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:layout_marginLeft="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/add_image"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_marginRight="8dp"
+            android:src="@drawable/baseline_add_circle_outline_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/logoutImage" />
+
+        <ImageView
+            android:id="@+id/logoutImage"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:background="@drawable/no_bg_ripple"
+            android:clickable="true"
+            android:layout_margin="16dp"
+            android:src="@drawable/baseline_more_vert_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scroller"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/action_bar_layout1">
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
-
-            <ImageView
-                android:id="@+id/logoutImage"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:background="@drawable/no_bg_ripple"
-                android:clickable="true"
-
-                android:src="@drawable/baseline_more_vert_24"
-                app:layout_constraintBottom_toBottomOf="@+id/headingTV"
-                app:layout_constraintEnd_toEndOf="@+id/guideline6"
-                app:layout_constraintTop_toTopOf="@+id/headingTV" />
-
-            <TextView
-                android:id="@+id/headingTV"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="Machines"
-
-                android:textColor="@color/black"
-
-
-                app:layout_constraintStart_toStartOf="@+id/guideline5"
-                app:layout_constraintTop_toTopOf="parent" />
 
 
             <androidx.recyclerview.widget.RecyclerView
@@ -55,11 +75,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:nestedScrollingEnabled="false"
-                android:paddingTop="0dp"
 
+                android:paddingTop="0dp"
                 app:layout_constraintEnd_toStartOf="@+id/guideline6"
                 app:layout_constraintStart_toStartOf="@+id/guideline5"
-                app:layout_constraintTop_toBottomOf="@+id/headingTV" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline5"
@@ -91,15 +111,13 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/noPlantsLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:background="@color/white"
-        android:visibility="visible"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
+       app:layout_constraintTop_toBottomOf="@id/action_bar_layout1"
+        app:layout_constraintStart_toStartOf="parent">
 
         <ImageView
             android:id="@+id/imageView3"
@@ -165,20 +183,7 @@
             app:layout_constraintStart_toStartOf="@+id/textView3"
             app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
-        <TextView
-            android:id="@+id/headingDummyTV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:text="Machines"
-            android:textAppearance="@style/LargeText"
-            android:textSize="18sp"
-            android:textColor="@color/black"
 
-
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
