@@ -226,6 +226,8 @@
                         android:background="@drawable/production_bg"
                         android:textSize="14sp"
                         android:enabled="false"
+
+
                         android:textColor="@color/black"
                         android:layout_marginLeft="8dp"
                         android:singleLine="true"
