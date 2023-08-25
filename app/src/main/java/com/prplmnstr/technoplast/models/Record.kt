@@ -38,10 +38,10 @@ data class Record (var name: String = "",
                    var grindingMaterialLeft: Int = 0,
 
                    var operator: String = "",
-                   var shift:String = ""
+                   var shift:String = "",
 
 
-
+                    var reason:String =""
 
 
 
