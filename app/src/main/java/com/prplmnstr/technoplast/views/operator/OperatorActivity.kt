@@ -195,7 +195,8 @@ class OperatorActivity : AppCompatActivity() {
         var end = binding.endEt.text.toString()
         var lump = binding.lumpEt.text.toString()
         var materialLeft = binding.materialLeftEt.text.toString()
-        var reason = ""
+
+        var reason = binding.reasonEt.text.toString()
 
         if(!one.isEmpty())
             shiftRecord.one = one.toInt()
@@ -235,7 +236,7 @@ class OperatorActivity : AppCompatActivity() {
             eleven.isEmpty() ||
             twelve.isEmpty()
                 ){
-            reason = binding.reasonEt.text.toString()
+
             if(reason.isEmpty()){
                 binding.reasonEt.error = "One or more shift field is empty please write the reason"
                 return false

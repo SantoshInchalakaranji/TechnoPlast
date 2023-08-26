@@ -7,6 +7,7 @@ class Constants {
     companion object {
         const val ADMIN = "Admin";
         const val OPERATOR = "Operator";
+        const val SUPERVISOR = "Supervisor";
         const val SAVED_USER_TYPE = "userType";
         const val SHARED_PREFERENCE = "Myprefs"
         const val OPERATORS = "Operators"
@@ -19,7 +20,7 @@ class Constants {
         const val RECORD = "Record"
         const val RECORDS = "Records"
          val USER_TYPE_SIGN_IN = Arrays.asList<String>(
-           OPERATOR,
+             SUPERVISOR,
             ADMIN
         )
     }

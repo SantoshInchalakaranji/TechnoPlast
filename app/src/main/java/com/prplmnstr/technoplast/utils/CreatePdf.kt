@@ -269,6 +269,7 @@ class CreatePdf {
             totalHeadingList.add("OPEATOR SIGN")
             totalHeadingList.add("LUMP(GATTA) KG")
             totalHeadingList.add("GRINDING MATERIAL LEFT")
+            totalHeadingList.add("SUMMARY")
 
             val totalHeadingListAns1: MutableList<String> = ArrayList()
             totalHeadingListAns1.add(dayRecord.qty.toString())
@@ -279,6 +280,10 @@ class CreatePdf {
             totalHeadingListAns1.add("")
             totalHeadingListAns1.add(dayRecord.lump.toString())
             totalHeadingListAns1.add(dayRecord.grindingMaterialLeft.toString())
+            if(dayRecord.reason.length>33)
+                dayRecord.reason = dayRecord.reason.substring(0,33)+"..."
+            totalHeadingListAns1.add(dayRecord.reason)
+
 
             val totalHeadingListAns2: MutableList<String> = ArrayList()
             totalHeadingListAns2.add(nightRecord.qty.toString())
@@ -289,6 +294,9 @@ class CreatePdf {
             totalHeadingListAns2.add("")
             totalHeadingListAns2.add(nightRecord.lump.toString())
             totalHeadingListAns2.add(nightRecord.grindingMaterialLeft.toString())
+            if(nightRecord.reason.length>33)
+                nightRecord.reason = nightRecord.reason.substring(0,33)+"..."
+            totalHeadingListAns2.add(nightRecord.reason)
 
 
             var horizontalLineStart = 120f
@@ -447,7 +455,7 @@ class CreatePdf {
 
             newHorizontaLineStart = horizontalLineStart
             textStart = textWidth
-            for (i in 0..7) {
+            for (i in 0..8) {
                 horizontalLineStart += 25f
                 canvas.drawText(totalHeadingList.get(i), textStart, textHorizontal, headingPaint)
                 canvas.drawText(
@@ -475,11 +483,14 @@ class CreatePdf {
                     columnStart,
                     newHorizontaLineStart,
                     columnStart,
-                    newHorizontaLineStart + (8 * 25).toFloat(),
+                    newHorizontaLineStart + (9 * 25).toFloat(),
                     linePaint
                 )
                 columnStart = columnStart + columnWidth
             }
+
+
+
             // writing end
 
             pdfDocument.finishPage(page1)

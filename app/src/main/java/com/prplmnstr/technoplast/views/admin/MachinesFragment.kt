@@ -63,6 +63,15 @@ class MachinesFragment : Fragment(), MouldItemAdapter.OnMouldItemClickListener {
         initializeLoader()
         loadMachines()
 
+
+        mouldAdapter = MouldItemAdapter(mouldList,this)
+
+
+        binding.mouldRv.apply {
+            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+            adapter = mouldAdapter
+        }
+
         binding.addImage.setOnClickListener {
           displayDailog()
 
