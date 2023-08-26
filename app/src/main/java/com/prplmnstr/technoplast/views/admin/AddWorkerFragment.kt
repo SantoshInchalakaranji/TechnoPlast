@@ -119,21 +119,21 @@ class AddWorkerFragment : Fragment() , OperatorItemAdapter.DeleteCallback{
                 userPassword = addUserDialogBinding.passwordET.text.toString()
 
             } else {
-                Toast.makeText(requireContext(), "Operator email already exist.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Supervisor email already exist.", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
             if (!userEmail.endsWith("@gmail.com")) {
                 addUserDialogBinding.emailET.error = "Enter valid Email Address"
             } else if (userName.isEmpty()) {
-                addUserDialogBinding.nameET.error = "Enter Operator Name"
+                addUserDialogBinding.nameET.error = "Enter Supervisor Name"
             } else if (userPassword.length < 8) {
                 addUserDialogBinding.passwordET.error = "Password should be at least 8 characters"
             } else {
                 loader.show()
                 viewModel.sendUserDataToFirestore(userName, userEmail,userPassword) { isSuccess ->
                     if (isSuccess) {
-                        Toast.makeText(requireContext(), "Operator Details added successfully!", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(requireContext(), "Supervisor Details added successfully!", Toast.LENGTH_SHORT).show()
                         val operator = Operator(userName,userEmail, userPassword)
                         viewModel.signUpUser(userEmail,userPassword,requireContext())
                         operatorList.add(operator)
@@ -146,7 +146,7 @@ class AddWorkerFragment : Fragment() , OperatorItemAdapter.DeleteCallback{
                         loader.dismiss()
 
                     } else {
-                        Toast.makeText(requireContext(), "Failed to add operator.", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(requireContext(), "Failed to add Supervisor.", Toast.LENGTH_SHORT).show()
                     }
                 }
 
