@@ -267,8 +267,7 @@
                         android:layout_marginRight="8dp"
                         android:background="@drawable/production_bg"
                         android:textSize="14sp"
-                        android:enabled="false"
-                        android:textColor="@color/black"
+
                         android:singleLine="true"
                         app:layout_constraintTop_toBottomOf="@id/product_wt_tv"
                         app:layout_constraintStart_toStartOf="parent"
@@ -294,8 +293,7 @@
                         android:layout_marginTop="8dp"
                         android:background="@drawable/production_bg"
                         android:textSize="14sp"
-                        android:enabled="false"
-                        android:textColor="@color/black"
+
                         android:singleLine="true"
                         android:layout_marginLeft="8dp"
                         app:layout_constraintTop_toBottomOf="@id/order_qty_tv"
@@ -371,8 +369,7 @@
                         android:layout_marginRight="8dp"
                         android:background="@drawable/production_bg"
                         android:textSize="14sp"
-                        android:enabled="false"
-                        android:textColor="@color/black"
+
                         android:singleLine="true"
                         app:layout_constraintTop_toBottomOf="@id/article_tv"
                         app:layout_constraintStart_toStartOf="parent"
@@ -398,8 +395,7 @@
                         android:background="@drawable/production_bg"
                         android:textSize="14sp"
                         android:singleLine="true"
-                        android:enabled="false"
-                        android:textColor="@color/black"
+
                         android:layout_marginLeft="8dp"
                         app:layout_constraintTop_toBottomOf="@id/heatind_tv"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -426,8 +422,7 @@
                         android:background="@drawable/production_bg"
                         android:textSize="14sp"
                         android:singleLine="true"
-                        android:enabled="false"
-                        android:textColor="@color/black"
+
                         app:layout_constraintTop_toBottomOf="@id/cavity_tv"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toStartOf="@id/center_guideline"/>
@@ -453,8 +448,7 @@
                         android:background="@drawable/production_bg"
                         android:textSize="14sp"
                         android:singleLine="true"
-                        android:enabled="false"
-                        android:textColor="@color/black"
+
                         android:layout_marginLeft="8dp"
                         app:layout_constraintTop_toBottomOf="@id/heating_act_tv"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -481,8 +475,7 @@
                         android:background="@drawable/production_bg"
                         android:textSize="14sp"
                         android:singleLine="true"
-                        android:enabled="false"
-                        android:textColor="@color/black"
+
                         app:layout_constraintTop_toBottomOf="@id/raw_material_tv"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toStartOf="@id/center_guideline"/>
@@ -508,8 +501,7 @@
                         android:textSize="14sp"
                         android:singleLine="true"
                         android:layout_marginLeft="8dp"
-                        android:enabled="false"
-                        android:textColor="@color/black"
+
                         app:layout_constraintTop_toBottomOf="@id/material_used_tv"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@id/center_guideline"/>
@@ -536,8 +528,7 @@
                         android:background="@drawable/production_bg"
                         android:textSize="14sp"
                         android:singleLine="true"
-                        android:enabled="false"
-                        android:textColor="@color/black"
+
                         app:layout_constraintTop_toBottomOf="@id/pigment_tv"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toStartOf="@id/center_guideline"/>
@@ -565,8 +556,7 @@
                         android:textSize="14sp"
                         android:singleLine="true"
                         android:layout_marginLeft="8dp"
-                        android:enabled="false"
-                        android:textColor="@color/black"
+
                         app:layout_constraintTop_toBottomOf="@id/mb_used_tv"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@id/center_guideline"/>
