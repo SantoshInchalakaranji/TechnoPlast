@@ -11,6 +11,7 @@ class Constants {
         const val SHARED_PREFERENCE = "Myprefs"
         const val OPERATORS = "Operators"
         const val MACHINES = "Machines"
+        const val MOULDS = "Moulds"
         const val MACHINE = "Machine"
         const val SHIFT_MODE = "Shift"
         const val DAY_SHIFT = "Day"

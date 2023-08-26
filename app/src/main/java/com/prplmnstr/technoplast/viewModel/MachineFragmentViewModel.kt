@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.firestore.FirebaseFirestore
 import com.prplmnstr.technoplast.models.Machine
+import com.prplmnstr.technoplast.models.Mould
 import com.prplmnstr.technoplast.models.Operator
 import com.prplmnstr.technoplast.utils.Constants
 import javax.crypto.Mac
@@ -55,6 +56,24 @@ class MachineFragmentViewModel : ViewModel() {
         return liveData
     }
 
+    fun retrieveMoulds(): LiveData<List<Mould>> {
+        val liveData = MutableLiveData<List<Mould>>()
+
+        firestore.collection(Constants.MOULDS).get().addOnSuccessListener { result ->
+
+            val mouldList = mutableListOf<Mould>()
+            for (document in result) {
+                val mould = document.toObject(Mould::class.java)
+                mouldList.add(mould)
+            }
+            liveData.value = mouldList
+        }.addOnFailureListener { exception ->
+            // Handle error
+        }
+
+        return liveData
+    }
+
     fun isMachineExist(machineList: List<Machine>, machineName: String?): Boolean {
         for (machine in machineList) {
             if (machine.name.equals(machineName)) {
@@ -71,5 +90,27 @@ class MachineFragmentViewModel : ViewModel() {
 
         editor.remove(Constants.SAVED_USER_TYPE)
         editor.apply()
+    }
+
+    fun isMouldExist(mouldList: MutableList<Mould>, mouldName: String): Boolean {
+        for (mould in mouldList) {
+            if (mould.name.equals(mouldName)) {
+                return true // Email address exists in the list
+            }
+        }
+        return false // Email address does not exist in the list
+    }
+
+    fun uploadMould(mould: Mould,
+                      onComplete: (Boolean) -> Unit) {
+
+        firestore.collection(Constants.MOULDS)
+            .document(mould.name)
+            .set(mould)
+            .addOnCompleteListener { task ->
+                val isSuccess = task.isSuccessful
+                onComplete(isSuccess)
+            }
+
     }
 }

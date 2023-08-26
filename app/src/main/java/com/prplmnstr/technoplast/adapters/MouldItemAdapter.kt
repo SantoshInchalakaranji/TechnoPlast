@@ -12,48 +12,52 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
 import com.prplmnstr.technoplast.R
 import com.prplmnstr.technoplast.databinding.MachineItemBinding
+import com.prplmnstr.technoplast.databinding.MouldItemBinding
 import com.prplmnstr.technoplast.databinding.OperatorItemBinding
 import com.prplmnstr.technoplast.models.Machine
+import com.prplmnstr.technoplast.models.Mould
 import com.prplmnstr.technoplast.models.Operator
 import com.prplmnstr.technoplast.utils.Constants
 import com.prplmnstr.technoplast.viewModel.AddUserFragmentViewModel
 import com.prplmnstr.technoplast.views.admin.MachineDetailsActivity
 
-class MachineItemAdapter(private val machineList: MutableList<Machine>) : RecyclerView.Adapter<MachineItemAdapter.MachineViewHolder>() {
+class MouldItemAdapter(private val mouldList: MutableList<Mould>,private val listener: OnMouldItemClickListener) : RecyclerView.Adapter<MouldItemAdapter.MouldViewHolder>() {
 
-    private lateinit var binding: MachineItemBinding
+    private lateinit var binding: MouldItemBinding
     private lateinit var context: Context
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MachineViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MouldViewHolder {
         context = parent.context
-        binding = MachineItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return MachineViewHolder(binding)
+        binding = MouldItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return MouldViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: MachineViewHolder, position: Int) {
-        val currentMachine = machineList[position]
-        holder.bind(currentMachine)
+    override fun onBindViewHolder(holder: MouldViewHolder, position: Int) {
+        val currentMould = mouldList[position]
+        holder.bind(currentMould)
 
         holder.itemView.setOnClickListener {
             val context = holder.itemView.context
-            val intent = Intent(context, MachineDetailsActivity::class.java)
-            val userJson = Gson().toJson(currentMachine) // Convert to JSON string
-            intent.putExtra(Constants.MACHINE, userJson)
-            context.startActivity(intent)
+            listener.onItemClick(position)
+            //load dialog,
+
         }
     }
 
     override fun getItemCount(): Int {
-        return machineList.size
+        return mouldList.size
     }
 
-    inner class MachineViewHolder(private val binding: MachineItemBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(machine: Machine) {
-            binding.machineNameTv.text = machine.name
+    inner class MouldViewHolder(private val binding: MouldItemBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(mould: Mould) {
+            binding.mouldNameTv.text = mould.name
             //binding.mouldTv.text = machine.mould
 
 
 
         }
+    }
+    interface OnMouldItemClickListener {
+        fun onItemClick(position: Int)
     }
 }

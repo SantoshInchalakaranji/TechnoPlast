@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModel
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.gson.Gson
 import com.prplmnstr.technoplast.models.Machine
+import com.prplmnstr.technoplast.models.Mould
 import com.prplmnstr.technoplast.models.Operator
 import com.prplmnstr.technoplast.models.Record
 import com.prplmnstr.technoplast.utils.Constants
@@ -48,6 +49,24 @@ class OperatorActivityViewModel : ViewModel(){
 
         return liveData
     }
+
+    fun retrieveMoulds(): LiveData<List<Mould>> {
+        val liveData = MutableLiveData<List<Mould>>()
+
+        firestore.collection(Constants.MOULDS).get().addOnSuccessListener { result ->
+
+            val mouldList = mutableListOf<Mould>()
+            for (document in result) {
+                val mould = document.toObject(Mould::class.java)
+                mouldList.add(mould)
+            }
+            liveData.value = mouldList
+        }.addOnFailureListener { exception ->
+            // Handle error
+        }
+
+        return liveData
+    }
     fun uploadMachine(machine: Machine,
                       onComplete: (Boolean) -> Unit) {
 
@@ -61,22 +80,22 @@ class OperatorActivityViewModel : ViewModel(){
 
     }
 
-    fun setMachineDetails(selectedMachine: Machine,shiftRecord: Record){
+    fun setMachineDetails(selectedMould: Mould,shiftRecord: Record){
 
-        shiftRecord.name = selectedMachine.name
-        shiftRecord.mould = selectedMachine.mould
-        shiftRecord.productionWT = selectedMachine.productionWT
-        shiftRecord.orderQty = selectedMachine.orderQty
-        shiftRecord.loadTime = selectedMachine.loadTime
-        shiftRecord.unloadTime = selectedMachine.unloadTime
-        shiftRecord.article = selectedMachine.article
-        shiftRecord.heating = selectedMachine.heating
-        shiftRecord.numCavity = selectedMachine.numCavity
-        shiftRecord.heatingAct = selectedMachine.heatingAct
-        shiftRecord.rawMaterial = selectedMachine.rawMaterial
-        shiftRecord.totalMaterialUsed = selectedMachine.totalMaterialUsed
-        shiftRecord.pigment = selectedMachine.pigment
-        shiftRecord.totalMbUsed = selectedMachine.totalMbUsed
+        shiftRecord.mould = selectedMould.name
+        shiftRecord.productionWT = selectedMould.productionWT
+        shiftRecord.orderQty = selectedMould.orderQty
+        shiftRecord.loadTime = selectedMould.loadTime
+        shiftRecord.unloadTime = selectedMould.unloadTime
+        shiftRecord.article = selectedMould.article
+        shiftRecord.heating = selectedMould.heating
+        shiftRecord.numCavity = selectedMould.numCavity
+        shiftRecord.heatingAct = selectedMould.heatingAct
+        shiftRecord.rawMaterial = selectedMould.rawMaterial
+        shiftRecord.totalMaterialUsed = selectedMould.totalMaterialUsed
+        shiftRecord.pigment = selectedMould.pigment
+        shiftRecord.totalMbUsed = selectedMould.totalMbUsed
+
 
 
     }

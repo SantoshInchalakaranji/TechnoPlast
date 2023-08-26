@@ -1,8 +1,10 @@
 package com.prplmnstr.technoplast.views
 
+import android.Manifest
 import android.R
 import android.app.Dialog
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +12,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import androidx.lifecycle.ViewModelProvider
 import com.prplmnstr.technoplast.databinding.ActivityLoginBinding
 import com.prplmnstr.technoplast.utils.Constants
@@ -32,6 +35,14 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         viewModel = ViewModelProvider(this).get(LoginActivityViewModel::class.java)
+
+        ActivityCompat.requestPermissions(
+            this, arrayOf(
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.READ_EXTERNAL_STORAGE
+            ), PackageManager.PERMISSION_GRANTED
+        )
+
 
         initializeLoader()
         // Get SharedPreferences instance

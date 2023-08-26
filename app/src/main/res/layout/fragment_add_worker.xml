@@ -34,7 +34,7 @@
 
             android:padding="8dp"
 
-            android:text="Operators"
+            android:text="Supervisors"
             android:textSize="18sp"
             android:textAppearance="@style/LargeText"
             android:textColor="@color/black"
@@ -78,7 +78,7 @@
                     android:layout_marginBottom="16dp"
                     android:fontFamily="@font/segeo_bold"
 
-                    android:text="Operator Details"
+                    android:text="Supervisor Details"
                     android:textAppearance="@style/RegularStyle"
                     android:textColor="#BDBDBE"
                     android:textSize="13sp"

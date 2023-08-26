@@ -21,7 +21,7 @@
             android:id="@+id/machine_name_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Machines"
+            android:text="Machines &amp; Moulds"
             android:textAppearance="@style/LargeText"
             android:textColor="@color/black"
             android:textSize="18sp"
@@ -67,6 +67,20 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/machineTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/segeo_bold"
+
+                android:text="Machines"
+                android:textAppearance="@style/RegularStyle"
+                android:textColor="#BDBDBE"
+                android:textSize="13sp"
+                app:layout_constraintStart_toStartOf="@id/guideline5"
+                app:layout_constraintTop_toTopOf="parent" />
+
 
 
             <androidx.recyclerview.widget.RecyclerView
@@ -79,8 +93,35 @@
                 android:paddingTop="0dp"
                 app:layout_constraintEnd_toStartOf="@+id/guideline6"
                 app:layout_constraintStart_toStartOf="@+id/guideline5"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/machineTV" />
 
+
+            <TextView
+                android:id="@+id/mouldTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/segeo_bold"
+
+                android:text="Moulds"
+                android:textAppearance="@style/RegularStyle"
+                android:textColor="#BDBDBE"
+                android:textSize="13sp"
+                app:layout_constraintStart_toStartOf="@id/guideline5"
+                app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/mouldRv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:nestedScrollingEnabled="false"
+
+                android:paddingTop="0dp"
+                app:layout_constraintEnd_toStartOf="@+id/guideline6"
+                app:layout_constraintStart_toStartOf="@+id/guideline5"
+                app:layout_constraintTop_toBottomOf="@id/mouldTV" />
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline5"
                 android:layout_width="wrap_content"
@@ -102,7 +143,7 @@
                 android:visibility="invisible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/recyclerView">
+                app:layout_constraintTop_toBottomOf="@+id/mouldRv">
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>

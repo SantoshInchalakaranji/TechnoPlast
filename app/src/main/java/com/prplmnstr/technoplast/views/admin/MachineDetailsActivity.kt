@@ -98,13 +98,13 @@ class MachineDetailsActivity : AppCompatActivity() {
             day_mode =true
             finish()
         }
-        binding.submitBtn.setOnClickListener {
-            if(day_mode==true)
-            updateShiftData(dayShiftRecord,Machine())
-            else{
-                updateShiftData(nightShiftRecord,Machine())
-            }
-        }
+//        binding.submitBtn.setOnClickListener {
+//            if(day_mode==true)
+//            updateShiftData(dayShiftRecord,Machine())
+//            else{
+//                updateShiftData(nightShiftRecord,Machine())
+//            }
+//        }
     }
 
     private fun loadUIWithShift(shiftRecord: Record) {
@@ -121,6 +121,7 @@ class MachineDetailsActivity : AppCompatActivity() {
         binding.materialUsedEt.setText(shiftRecord.totalMaterialUsed)
         binding.pigmentEt.setText(shiftRecord.pigment)
         binding.mbUsedEt.setText(shiftRecord.totalMbUsed)
+        binding.reasonEt.setText(shiftRecord.reason)
 
 
         binding.firstEt.setText(shiftRecord.one.toString())
@@ -162,19 +163,19 @@ private fun updateShiftData(shiftRecord: Record, selectedMachine:Machine){
     shiftRecord.totalMbUsed = binding.mbUsedEt.text.toString()
 
     selectedMachine.name = shiftRecord.name
-    selectedMachine.mould = shiftRecord.mould
-    selectedMachine.productionWT = binding.productinWtEt.text.toString()
-    selectedMachine.article = binding.articleEt.text.toString()
-    selectedMachine.orderQty = binding.orderQtyEt.text.toString()
-    selectedMachine.loadTime = binding.mLoadTimeEt.text.toString()
-    selectedMachine.unloadTime = binding.mUnloadTimeEt.text.toString()
-    selectedMachine.numCavity = binding.cavityEt.text.toString()
-    selectedMachine.heating = binding.heatingEt.text.toString()
-    selectedMachine.heatingAct = binding.heatingActEt.text.toString()
-    selectedMachine.rawMaterial = binding.rawMaterialEt.text.toString()
-    selectedMachine.totalMaterialUsed = binding.materialUsedEt.text.toString()
-    selectedMachine.pigment = binding.pigmentEt.text.toString()
-    selectedMachine.totalMbUsed = binding.mbUsedEt.text.toString()
+//    selectedMachine.mould = shiftRecord.mould
+//    selectedMachine.productionWT = binding.productinWtEt.text.toString()
+//    selectedMachine.article = binding.articleEt.text.toString()
+//    selectedMachine.orderQty = binding.orderQtyEt.text.toString()
+//    selectedMachine.loadTime = binding.mLoadTimeEt.text.toString()
+//    selectedMachine.unloadTime = binding.mUnloadTimeEt.text.toString()
+//    selectedMachine.numCavity = binding.cavityEt.text.toString()
+//    selectedMachine.heating = binding.heatingEt.text.toString()
+//    selectedMachine.heatingAct = binding.heatingActEt.text.toString()
+//    selectedMachine.rawMaterial = binding.rawMaterialEt.text.toString()
+//    selectedMachine.totalMaterialUsed = binding.materialUsedEt.text.toString()
+//    selectedMachine.pigment = binding.pigmentEt.text.toString()
+//    selectedMachine.totalMbUsed = binding.mbUsedEt.text.toString()
 
     loader.show()
     viewModel.sendUserDataToFirestore(shiftRecord,selectedMachine) { isSuccess ->
@@ -253,7 +254,7 @@ private fun updateShiftData(shiftRecord: Record, selectedMachine:Machine){
         binding.machineNameTv.text = recievedMacine.name
 
             binding.machineNameEt.setText(recievedMacine.name)
-            binding.mouldEt.setText(recievedMacine.mould)
+           // binding.mouldEt.setText(recievedMacine.mould)
             //binding.productinWtEt.setText(recievedMacine.productionWT)
            // binding.orderQtyEt.setText(recievedMacine.orderQty)
            // binding.mLoadTimeEt.setText(recievedMacine.loadTime)

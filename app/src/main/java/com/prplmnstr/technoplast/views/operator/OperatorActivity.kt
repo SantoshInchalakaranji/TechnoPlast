@@ -25,6 +25,7 @@ import com.google.gson.Gson
 import com.prplmnstr.technoplast.R
 import com.prplmnstr.technoplast.databinding.ActivityOperatorBinding
 import com.prplmnstr.technoplast.models.Machine
+import com.prplmnstr.technoplast.models.Mould
 import com.prplmnstr.technoplast.models.Record
 import com.prplmnstr.technoplast.utils.Constants
 import com.prplmnstr.technoplast.utils.CreatePdf
@@ -36,13 +37,16 @@ class OperatorActivity : AppCompatActivity() {
 
     val createPdf: CreatePdf = CreatePdf()
     private lateinit var binding : ActivityOperatorBinding
-    private lateinit var shiftRecord : Record
+    private  var shiftRecord = Record()
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var viewModel: OperatorActivityViewModel
     private lateinit var loader: Dialog
     private val machineList = mutableListOf<Machine>()
+    private val mouldList = mutableListOf<Mould>()
     private val machineNamesList = mutableListOf<String>()
+    private val mouldNameList = mutableListOf<String>()
     private var spinnerAdapter: ArrayAdapter<String>? = null
+    private var mouldSpinnerAdapter: ArrayAdapter<String>? = null
 
     private var isImage1Visible = true
     private var day_mode = true
@@ -71,6 +75,7 @@ class OperatorActivity : AppCompatActivity() {
         loadMachines()
 
 
+
         binding.logoutImage.setOnClickListener { view ->
             val popupMenu = PopupMenu(this, view)
             val inflater: MenuInflater = popupMenu.menuInflater
@@ -96,30 +101,44 @@ class OperatorActivity : AppCompatActivity() {
         binding.submitBtn.setOnClickListener {
 
 
-            addDataToShiftRecord()
-            if(shiftRecord.shift.equals(Constants.DAY_SHIFT)){
-                createPdf.createPdf(this,this,shiftRecord, Record())
-            }else{
+            if(addDataToShiftRecord()){
+                if(shiftRecord.shift.equals(Constants.DAY_SHIFT)){
+                    createPdf.createPdf(this,this,shiftRecord, Record())
+                }else{
 
-                createPdf.createPdf(this,this, Record(),shiftRecord)
+                    createPdf.createPdf(this,this, Record(),shiftRecord)
+                }
+
+                uploadRecord()
+            }else{
+                return@setOnClickListener
             }
 
-            uploadRecord()
         }
         setSwitch()
 
         binding.spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(adapterView: AdapterView<*>?, view: View, i: Int, l: Long) {
 
-                setMachineDetails(machineList[i])
+                shiftRecord.name = machineNamesList[i]
             }
 
             override fun onNothingSelected(adapterView: AdapterView<*>?) {}
         }
 
+        binding.mouldSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(adapterView: AdapterView<*>?, view: View, i: Int, l: Long) {
+
+                setMouldDetails(mouldList[i])
+            }
+
+            override fun onNothingSelected(adapterView: AdapterView<*>?) {}
+        }
+
+
     }
 
-    private fun addDataToShiftRecord() {
+    private fun addDataToShiftRecord() : Boolean{
 
         shiftRecord.productionWT = binding.productinWtEt.text.toString()
         shiftRecord.article = binding.articleEt.text.toString()
@@ -133,22 +152,29 @@ class OperatorActivity : AppCompatActivity() {
         shiftRecord.totalMaterialUsed = binding.materialUsedEt.text.toString()
         shiftRecord.pigment = binding.pigmentEt.text.toString()
         shiftRecord.totalMbUsed = binding.mbUsedEt.text.toString()
+        shiftRecord.operator = binding.operatorEt.text.toString()
+
 
         selectedMachine.name = shiftRecord.name
-        selectedMachine.mould = shiftRecord.mould
-        selectedMachine.productionWT = binding.productinWtEt.text.toString()
-        selectedMachine.article = binding.articleEt.text.toString()
-        selectedMachine.orderQty = binding.orderQtyEt.text.toString()
-        selectedMachine.loadTime = binding.mLoadTimeEt.text.toString()
-        selectedMachine.unloadTime = binding.mUnloadTimeEt.text.toString()
-        selectedMachine.numCavity = binding.cavityEt.text.toString()
-        selectedMachine.heating = binding.heatingEt.text.toString()
-        selectedMachine.heatingAct = binding.heatingActEt.text.toString()
-        selectedMachine.rawMaterial = binding.rawMaterialEt.text.toString()
-        selectedMachine.totalMaterialUsed = binding.materialUsedEt.text.toString()
-        selectedMachine.pigment = binding.pigmentEt.text.toString()
-        selectedMachine.totalMbUsed = binding.mbUsedEt.text.toString()
 
+
+        if(shiftRecord.loadTime.isEmpty()){
+            showToast("Please enter Mould Load Time")
+            binding.mLoadTimeEt.error = "Please enter Mould Load Time"
+            return false
+        }
+
+        if(shiftRecord.unloadTime.isEmpty()){
+            showToast("Please enter Mould Unload Time")
+            binding.mUnloadTimeEt.error = "Please enter Mould Unload Time"
+            return false
+        }
+
+        if(shiftRecord.operator.isEmpty()){
+            showToast("Please enter operator name")
+            binding.operatorEt.error = "Please enter operator name"
+            return false
+        }
 
 
         var one = binding.firstEt.text.toString()
@@ -169,6 +195,7 @@ class OperatorActivity : AppCompatActivity() {
         var end = binding.endEt.text.toString()
         var lump = binding.lumpEt.text.toString()
         var materialLeft = binding.materialLeftEt.text.toString()
+        var reason = ""
 
         if(!one.isEmpty())
             shiftRecord.one = one.toInt()
@@ -195,6 +222,26 @@ class OperatorActivity : AppCompatActivity() {
         if(!twelve.isEmpty())
             shiftRecord.twelve = twelve.toInt()
 
+        if(one.isEmpty() ||
+            two.isEmpty() ||
+            three.isEmpty() ||
+            four.isEmpty() ||
+            five.isEmpty() ||
+            six.isEmpty() ||
+            seven.isEmpty() ||
+            eight.isEmpty() ||
+            nine.isEmpty() ||
+            ten.isEmpty() ||
+            eleven.isEmpty() ||
+            twelve.isEmpty()
+                ){
+            reason = binding.reasonEt.text.toString()
+            if(reason.isEmpty()){
+                binding.reasonEt.error = "One or more shift field is empty please write the reason"
+                return false
+            }
+        }
+
 
         if(!qty.isEmpty())
             shiftRecord.qty = qty.toInt()
@@ -209,13 +256,16 @@ class OperatorActivity : AppCompatActivity() {
             shiftRecord.grindingMaterialLeft = materialLeft.toInt()
 
         shiftRecord.shift = shiftMode
+        shiftRecord.reason = reason
+
+        return true
     }
 
 
     private fun uploadRecord() {
         var today = Helper.getTodayDateObject()
         shiftRecord.date = today.dateInStringFormat
-        //createPdf.createPdf(this, this,shiftRecord, getAnotherRecord())
+
 
         loader.show()
         viewModel.sendUserDataToFirestore(shiftRecord,selectedMachine) { isSuccess ->
@@ -233,9 +283,7 @@ class OperatorActivity : AppCompatActivity() {
 
 
 // Get the SharedPreferences.Editor
-        val editor = sharedPreferences.edit()
-        editor.remove(Constants.RECORD)
-        editor.apply()
+
         binding.firstEt.setText("")
         binding.secondEt.setText("")
         binding.threeEt.setText("")
@@ -254,29 +302,13 @@ class OperatorActivity : AppCompatActivity() {
         binding.endEt.setText("")
         binding.lumpEt.setText("")
         binding.materialLeftEt.setText("")
+        binding.operatorEt.setText("")
+        binding.reasonEt.setText("")
     }
 
-    private fun getAnotherRecord(): Record {
-        var anotherRecord = Record()
-        return anotherRecord
 
-    }
 
-    private fun getOperatorName(userEmail: String?) {
-        if (userEmail != null) {
-            viewModel.retrieveUserName(userEmail).observe(this, Observer { operatorName ->
-                if (operatorName != null) {
-                   shiftRecord.operator = operatorName
-                } else {
-                    shiftRecord.operator = Constants.OPERATOR
-                    showToast("Failed to load operator")
-                }
-            })
-        }
-        else{
-            shiftRecord.operator = Constants.OPERATOR
-        }
-    }
+
 
     private fun setSwitch() {
         binding.switchButton.setOnCheckedChangeListener { _: CompoundButton?, isChecked: Boolean ->
@@ -334,11 +366,34 @@ class OperatorActivity : AppCompatActivity() {
             } else {
                 machineList.clear()
                 machineList.addAll(retrievedList)
+                loadMoulds()
                 for(machine in machineList){
                     machineNamesList.add(machine.name)
                 }
+
+            }
+            loader.dismiss()
+        }
+    }
+
+    private fun loadMoulds() {
+        loader.show()
+
+
+        viewModel.retrieveMoulds().observe(this) { retrievedList ->
+            if (retrievedList.isEmpty()) {
+                binding.scroller.visibility = View.GONE
+                binding.switchButton.visibility = View.INVISIBLE
+                binding.noPlantsLayout.visibility = View.VISIBLE
+            } else {
+                mouldList.clear()
+                mouldList.addAll(retrievedList)
+
+                for(mould in mouldList){
+                    mouldNameList.add(mould.name)
+                }
                 loadUI()
-                getOperatorName(userEmail)
+
 
                 binding.noPlantsLayout.visibility = View.GONE
                 binding.scroller.visibility = View.VISIBLE
@@ -350,36 +405,21 @@ class OperatorActivity : AppCompatActivity() {
     }
 
     private fun loadUI() {
-        sharedPreferences = getSharedPreferences(Constants.SHARED_PREFERENCE, MODE_PRIVATE)
 
-        shiftRecord = retrieveRecordFromSharedPreferences()
         shiftRecord.shift = Constants.DAY_SHIFT
         shiftRecord.date = Helper.getTodayDateObject().dateInStringFormat
-        if(shiftRecord.name.isEmpty()){
 
-            setMachineNamesToSpinner()
-        }
 
-        else{
-            var positon = machineNamesList.indexOf(shiftRecord.name)
-            spinnerAdapter = ArrayAdapter<String>(
-                this,
-                android.R.layout.simple_spinner_item,
-                machineNamesList
-            )
-            spinnerAdapter!!.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            binding.spinner.setAdapter(spinnerAdapter)
+            setMachineAndMouldNamesToSpinner()
 
-            binding.spinner.setSelection(positon)
 
-            setStoredData()
-        }
+
 
 
     }
 
     private fun setStoredData() {
-        binding.mouldEt.setText(shiftRecord.mould)
+
         binding.productinWtEt.setText(shiftRecord.productionWT)
         binding.orderQtyEt.setText(shiftRecord.orderQty)
         binding.mLoadTimeEt.setText(shiftRecord.loadTime)
@@ -435,7 +475,7 @@ class OperatorActivity : AppCompatActivity() {
 
     }
 
-    private fun setMachineNamesToSpinner() {
+    private fun setMachineAndMouldNamesToSpinner() {
         spinnerAdapter = ArrayAdapter<String>(
             this,
             android.R.layout.simple_spinner_item,
@@ -445,16 +485,22 @@ class OperatorActivity : AppCompatActivity() {
         binding.spinner.setAdapter(spinnerAdapter)
 
 
-
+        mouldSpinnerAdapter = ArrayAdapter<String>(
+            this,
+            android.R.layout.simple_spinner_item,
+            mouldNameList
+        )
+        mouldSpinnerAdapter!!.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        binding.mouldSpinner.setAdapter(mouldSpinnerAdapter)
 
 
     }
 
-    private fun setMachineDetails(selectedMachine:Machine) {
+    private fun setMouldDetails(selectedMould:Mould) {
             //update record list with selected Machine data and set UI
 
-             viewModel.setMachineDetails(selectedMachine,shiftRecord)
-            binding.mouldEt.setText(shiftRecord.mould)
+             viewModel.setMachineDetails(selectedMould,shiftRecord)
+
             binding.orderQtyEt.setText(shiftRecord.orderQty)
             binding.productinWtEt.setText(shiftRecord.productionWT)
             binding.mLoadTimeEt.setText(shiftRecord.loadTime)

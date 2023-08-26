@@ -226,8 +226,6 @@
                         android:background="@drawable/production_bg"
                         android:textSize="14sp"
                         android:enabled="false"
-
-
                         android:textColor="@color/black"
                         android:layout_marginLeft="8dp"
                         android:singleLine="true"
@@ -1068,6 +1066,45 @@
                 app:layout_constraintTop_toBottomOf="@id/first_cardview"
                 app:layout_constraintStart_toEndOf="@id/l_guideline"/>
 
+            <androidx.cardview.widget.CardView
+                android:id="@+id/et_cardview"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:elevation="4dp"
+                app:cardCornerRadius="16dp"
+                app:layout_constraintEnd_toStartOf="@id/r_guideline"
+                app:layout_constraintStart_toEndOf="@id/l_guideline"
+                app:layout_constraintTop_toBottomOf="@id/summary_tv">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp">
+
+                    <EditText
+                        android:id="@+id/reasonEt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:textSize="14sp"
+
+                        android:hint="Summary/reason"
+                        android:enabled="false"
+                        android:textColor="@color/black"
+                        android:background="@drawable/production_bg"
+                        app:layout_constraintTop_toTopOf="parent"
+
+                        app:layout_constraintEnd_toEndOf="parent"
+
+                        />
+
+                </LinearLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/second_cardview"
@@ -1078,7 +1115,7 @@
                 app:cardCornerRadius="16dp"
                 app:layout_constraintEnd_toStartOf="@id/r_guideline"
                 app:layout_constraintStart_toEndOf="@id/l_guideline"
-                app:layout_constraintTop_toBottomOf="@id/summary_tv">
+                app:layout_constraintTop_toBottomOf="@id/et_cardview">
 
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -1275,19 +1312,19 @@
             </androidx.cardview.widget.CardView>
 
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/submitBtn"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:background="@drawable/red_rect_bg"
-                android:text="+ Update Record"
-                android:textAllCaps="false"
-                android:textAppearance="@style/SubTitleStyle"
-                app:backgroundTint="@color/light_red"
-                app:layout_constraintEnd_toStartOf="@id/r_guideline"
-                app:layout_constraintStart_toEndOf="@id/l_guideline"
-                app:layout_constraintTop_toBottomOf="@+id/second_cardview" />
+<!--            <com.google.android.material.button.MaterialButton-->
+<!--                android:id="@+id/submitBtn"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="16dp"-->
+<!--                android:background="@drawable/red_rect_bg"-->
+<!--                android:text="+ Update Record"-->
+<!--                android:textAllCaps="false"-->
+<!--                android:textAppearance="@style/SubTitleStyle"-->
+<!--                app:backgroundTint="@color/light_red"-->
+<!--                app:layout_constraintEnd_toStartOf="@id/r_guideline"-->
+<!--                app:layout_constraintStart_toEndOf="@id/l_guideline"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/second_cardview" />-->
 
             <ProgressBar
                 android:id="@+id/submit_progress"
@@ -1295,13 +1332,13 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_centerInParent="true"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="20dp"
                 android:elevation="10dp"
                 android:indeterminateTint="@color/white"
                 android:visibility="invisible"
-                app:layout_constraintTop_toBottomOf="@id/submitBtn"
-                app:layout_constraintStart_toStartOf="@id/submitBtn"
-                app:layout_constraintEnd_toEndOf="@id/submitBtn"/>
+                app:layout_constraintTop_toBottomOf="@id/second_cardview"
+                app:layout_constraintStart_toStartOf="@id/second_cardview"
+                app:layout_constraintEnd_toEndOf="@id/second_cardview"/>
 
 
 
